@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine", "Porcupine\Porcupine.csproj", "{F899979B-4757-4B9B-A08F-49FDE9431C02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Web.Host", "Porcupine\Porcupine.Web.Host.csproj", "{F899979B-4757-4B9B-A08F-49FDE9431C02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Core", "Porcupine.Core\Porcupine.Core.csproj", "{A0A6E690-9C15-4126-A718-49FDDBC27892}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.EntityFrameworkCore", "Porcupine.EntityFrameworkCore\Porcupine.EntityFrameworkCore.csproj", "{821466E9-2BC4-4989-A1EE-40A2C8611052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Application.Shared", "Porcupine.Application.Shared\Porcupine.Application.Shared.csproj", "{EE481878-1ED9-4BA7-B76D-64AE3F07FBC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Core.Shared", "Porcupine.Core.Shared\Porcupine.Core.Shared.csproj", "{71F05B48-8852-4AAC-ACCE-E1F884CBBB58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Application", "Porcupine.Application\Porcupine.Application.csproj", "{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Migrator", "Porcupine.Migrator\Porcupine.Migrator.csproj", "{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +27,30 @@ Global
 		{F899979B-4757-4B9B-A08F-49FDE9431C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F899979B-4757-4B9B-A08F-49FDE9431C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F899979B-4757-4B9B-A08F-49FDE9431C02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0A6E690-9C15-4126-A718-49FDDBC27892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0A6E690-9C15-4126-A718-49FDDBC27892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0A6E690-9C15-4126-A718-49FDDBC27892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0A6E690-9C15-4126-A718-49FDDBC27892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{821466E9-2BC4-4989-A1EE-40A2C8611052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{821466E9-2BC4-4989-A1EE-40A2C8611052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{821466E9-2BC4-4989-A1EE-40A2C8611052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{821466E9-2BC4-4989-A1EE-40A2C8611052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE481878-1ED9-4BA7-B76D-64AE3F07FBC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE481878-1ED9-4BA7-B76D-64AE3F07FBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE481878-1ED9-4BA7-B76D-64AE3F07FBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE481878-1ED9-4BA7-B76D-64AE3F07FBC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F05B48-8852-4AAC-ACCE-E1F884CBBB58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F05B48-8852-4AAC-ACCE-E1F884CBBB58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F05B48-8852-4AAC-ACCE-E1F884CBBB58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F05B48-8852-4AAC-ACCE-E1F884CBBB58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
