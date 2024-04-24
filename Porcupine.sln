@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Web.Host", "Porcupine\Porcupine.Web.Host.csproj", "{F899979B-4757-4B9B-A08F-49FDE9431C02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porcupine.Web.Host", "Porcupine.Web.Host\Porcupine.Web.Host.csproj", "{F899979B-4757-4B9B-A08F-49FDE9431C02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Core", "Porcupine.Core\Porcupine.Core.csproj", "{A0A6E690-9C15-4126-A718-49FDDBC27892}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porcupine.Core", "Porcupine.Core\Porcupine.Core.csproj", "{A0A6E690-9C15-4126-A718-49FDDBC27892}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.EntityFrameworkCore", "Porcupine.EntityFrameworkCore\Porcupine.EntityFrameworkCore.csproj", "{821466E9-2BC4-4989-A1EE-40A2C8611052}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porcupine.EntityFrameworkCore", "Porcupine.EntityFrameworkCore\Porcupine.EntityFrameworkCore.csproj", "{821466E9-2BC4-4989-A1EE-40A2C8611052}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Application.Shared", "Porcupine.Application.Shared\Porcupine.Application.Shared.csproj", "{EE481878-1ED9-4BA7-B76D-64AE3F07FBC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porcupine.Application.Contracts", "Porcupine.Application.Shared\Porcupine.Application.Contracts.csproj", "{EE481878-1ED9-4BA7-B76D-64AE3F07FBC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Core.Shared", "Porcupine.Core.Shared\Porcupine.Core.Shared.csproj", "{71F05B48-8852-4AAC-ACCE-E1F884CBBB58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porcupine.Core.Shared", "Porcupine.Core.Shared\Porcupine.Core.Shared.csproj", "{71F05B48-8852-4AAC-ACCE-E1F884CBBB58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Application", "Porcupine.Application\Porcupine.Application.csproj", "{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porcupine.Application", "Porcupine.Application\Porcupine.Application.csproj", "{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Porcupine.Migrator", "Porcupine.Migrator\Porcupine.Migrator.csproj", "{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{89E40AA2-1111-4E46-8CEE-037E12870E9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CCF9012B-BCD2-4F1A-BC1E-2C80BE0C1FA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Porcupine.Tests", "Porcupine.Tests\Porcupine.Tests.csproj", "{5A4F2816-A8A1-4414-A326-B722A1A3FF84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,13 +51,22 @@ Global
 		{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC0A2C7D-770F-4DAF-B01A-9E96E418A291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A4F2816-A8A1-4414-A326-B722A1A3FF84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A4F2816-A8A1-4414-A326-B722A1A3FF84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A4F2816-A8A1-4414-A326-B722A1A3FF84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A4F2816-A8A1-4414-A326-B722A1A3FF84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F899979B-4757-4B9B-A08F-49FDE9431C02} = {89E40AA2-1111-4E46-8CEE-037E12870E9A}
+		{A0A6E690-9C15-4126-A718-49FDDBC27892} = {89E40AA2-1111-4E46-8CEE-037E12870E9A}
+		{821466E9-2BC4-4989-A1EE-40A2C8611052} = {89E40AA2-1111-4E46-8CEE-037E12870E9A}
+		{EE481878-1ED9-4BA7-B76D-64AE3F07FBC6} = {89E40AA2-1111-4E46-8CEE-037E12870E9A}
+		{71F05B48-8852-4AAC-ACCE-E1F884CBBB58} = {89E40AA2-1111-4E46-8CEE-037E12870E9A}
+		{43B69AD5-53B2-4C79-9DF6-CFA6CBB6FC69} = {89E40AA2-1111-4E46-8CEE-037E12870E9A}
+		{5A4F2816-A8A1-4414-A326-B722A1A3FF84} = {CCF9012B-BCD2-4F1A-BC1E-2C80BE0C1FA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6ECAA209-CA0B-4128-9B10-57BB7D4FC40A}
