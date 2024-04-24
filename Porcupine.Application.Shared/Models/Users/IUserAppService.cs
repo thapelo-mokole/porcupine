@@ -2,15 +2,21 @@
 using Porcupine.Application.Contracts.Models.Users.Dtos;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Porcupine.Application.Contracts.Models.Users
 {
     public interface IUserAppService
     {
-        //Task<LoginResponseDto> LoginAsync(LoginUserDto loginUserModel);
+        Task<CreateUpdateUserResponseDto> CreateAsync(CreateUpdateUserDto createUserDto);
 
-        Task<CreateUpdateUserResponseDto> CreateAsync(CreateUpdateUserDto createUserModel);
+        Task<BaseResponseDto> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+
+        Task<UserResponseDto> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
+        Task<IEnumerable<UserResponseDto>> GetAllListAsync(CancellationToken cancellationToken = default);
+
+        Task<CreateUpdateUserResponseDto> UpdateAsync(Guid id, CreateUpdateUserDto createUpdateUserDto, CancellationToken cancellationToken = default);
     }
 }

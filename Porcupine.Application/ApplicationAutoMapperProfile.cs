@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Porcupine.Application.Contracts.Models.Groups.Dtos;
+using Porcupine.Application.Contracts.Models.Permissions.Dtos;
+using Porcupine.Application.Contracts.Models.Users.Dtos;
+using Porcupine.Core.Entities;
 
 namespace Porcupine.Application
 {
@@ -11,6 +10,14 @@ namespace Porcupine.Application
     {
         public ApplicationAutoMapperProfile()
         {
+            CreateMap<CreateUpdateUserDto, User>();
+            CreateMap<User, UserResponseDto>();
+
+            CreateMap<CreateUpdateGroupDto, Group>();
+            CreateMap<Group, GroupResponseDto>();
+
+            CreateMap<CreateUpdatePermissionDto, Permission>();
+            CreateMap<Permission, PermissionResponseDto>();
         }
     }
 }

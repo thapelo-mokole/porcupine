@@ -9,6 +9,8 @@ namespace Porcupine.EntityFrameworkCore.Repositories.Base
 
         Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate);
 
+        Task<List<TEntity>> GetAllAsync();
+
         Task<TEntity> AddAsync(TEntity entity);
 
         Task<TEntity> UpdateAsync(TEntity entity);

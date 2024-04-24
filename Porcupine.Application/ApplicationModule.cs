@@ -2,8 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Porcupine.Application.Common;
+using Porcupine.Application.Contracts.Models.Groups;
+using Porcupine.Application.Contracts.Models.Permissions;
 using Porcupine.Application.Contracts.Models.Users;
-using Porcupine.Application.Models.Users;
+using Porcupine.Application.Services;
 using Porcupine.Core.Shared.Utils.Implementation;
 using Porcupine.Core.Shared.Utils.Interface;
 
@@ -26,6 +28,8 @@ namespace Porcupine.Application
         private static void AddServices(this IServiceCollection services, IWebHostEnvironment env)
         {
             services.AddScoped<IUserAppService, UserAppService>();
+            services.AddScoped<IPermissionAppService, PermissionAppService>();
+            services.AddScoped<IGroupAppService, GroupAppService>();
             services.AddScoped<IUtilityService, UtilityService>();
         }
 

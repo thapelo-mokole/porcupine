@@ -33,12 +33,13 @@ namespace Porcupine.EntityFrameworkCore.EntityFrameworkCore
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.CreatedBy = _utilityService.GetUserId();
+                        entry.Entity.CreatedBy = _utilityService.GetUserId() ?? "Default";
+                        entry.Entity.UpdatedBy = string.Empty;
                         entry.Entity.CreatedOn = DateTime.Now;
                         break;
 
                     case EntityState.Modified:
-                        entry.Entity.UpdatedBy = _utilityService.GetUserId();
+                        entry.Entity.UpdatedBy = _utilityService.GetUserId() ?? "Default";
                         entry.Entity.UpdatedOn = DateTime.Now;
                         break;
                 }

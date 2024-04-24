@@ -18,8 +18,7 @@ namespace Porcupine.Core.Entities
         [PersonalData]
         public virtual bool EmailConfirmed { get; set; }
 
-        public override string ToString()
-            => UserName ?? string.Empty;
+        public override string ToString() => UserName ?? string.Empty;
 
         public string? CreatedBy { get; set; }
 

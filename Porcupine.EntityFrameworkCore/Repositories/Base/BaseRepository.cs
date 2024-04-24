@@ -2,6 +2,7 @@
 using Porcupine.Core.Common;
 using Porcupine.Core.Exceptions;
 using Porcupine.EntityFrameworkCore.EntityFrameworkCore;
+using System;
 using System.Linq.Expressions;
 
 namespace Porcupine.EntityFrameworkCore.Repositories.Base
@@ -36,6 +37,11 @@ namespace Porcupine.EntityFrameworkCore.Repositories.Base
         public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await DbSet.Where(predicate).ToListAsync();
+        }
+
+        public async Task<List<TEntity>> GetAllAsync()
+        {
+            return await DbSet.ToListAsync();
         }
 
         public async Task<TEntity> GetFirstAsync(Expression<Func<TEntity, bool>> predicate)

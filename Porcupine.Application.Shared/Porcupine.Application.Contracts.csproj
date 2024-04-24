@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Groups\Dtos\GroupGetListInput.cs" />
+    <Compile Remove="Models\Permissions\Dtos\PermissionGetListInput.cs" />
     <Compile Remove="Models\Users\Dtos\ConfirmEmailResponseDto.cs" />
+    <Compile Remove="Models\Users\Dtos\UserGetListInput.cs" />
   </ItemGroup>
 
 </Project>
