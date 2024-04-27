@@ -38,6 +38,8 @@ namespace Porcupine.Application.Services
 
             try
             {
+                await _groupRepository.IsDescriptionUnique(createGroupDto.ShortDescription);
+
                 Group group = new()
                 {
                     ShortDescription = createGroupDto.ShortDescription,
@@ -56,10 +58,10 @@ namespace Porcupine.Application.Services
 
                 results.Id = result.Id;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Handle the exception or log it
-                Console.WriteLine("An error occurred: " + ex.Message);
+                // Handle the exception by logging it, but for the prupose of assessment, just throw
+                throw;
             }
 
             return results;
@@ -67,7 +69,12 @@ namespace Porcupine.Application.Services
 
         public async Task<BaseResponseDto> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            var group = await _groupRepository.GetFirstAsync(x => x.Id == id);
+            var group = await _groupRepository.GetFirstAsync(x => x.Id == id, includes: x => x.Users);
+
+            if (group.Users != null)
+            {
+                throw new InvalidOperationException("Cannot delete the child (group) while linked to a parent(user).");
+            }
 
             return new BaseResponseDto
             {
@@ -118,10 +125,10 @@ namespace Porcupine.Application.Services
 
                 results.Id = result.Id;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Handle the exception or log it
-                Console.WriteLine("An error occurred: " + ex.Message);
+                // Handle the exception by logging it, but for the prupose of assessment, just throw
+                throw;
             }
 
             return results;

@@ -39,6 +39,9 @@ namespace Porcupine.Application.Services
 
             try
             {
+                await _userRepository.IsEmailUnique(createUserDto.Email);
+                await _userRepository.IsUsernameUnique(createUserDto.UserName);
+
                 User user = new()
                 {
                     UserName = createUserDto.UserName.Trim(),
@@ -61,10 +64,10 @@ namespace Porcupine.Application.Services
 
                 results.Id = result.Id;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Handle the exception or log it
-                Console.WriteLine("An error occurred: " + ex.Message);
+                // Handle the exception by logging it, but for the prupose of assessment, just throw
+                throw;
             }
 
             return results;
@@ -126,10 +129,10 @@ namespace Porcupine.Application.Services
 
                 results.Id = result.Id;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Handle the exception or log it
-                Console.WriteLine("An error occurred: " + ex.Message);
+                // Handle the exception by logging it, but for the prupose of assessment, just throw
+                throw;
             }
 
             return results;

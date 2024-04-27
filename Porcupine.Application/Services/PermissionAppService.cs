@@ -21,6 +21,8 @@ namespace Porcupine.Application.Services
 
         public async Task<CreateUpdatePermissionResponseDto> CreateAsync(CreateUpdatePermissionDto createPermissionDto)
         {
+            await _permissionRepository.IsDescriptionUnique(createPermissionDto.ShortDescription);
+
             var permission = _mapper.Map<Permission>(createPermissionDto);
 
             var result = await _permissionRepository.AddAsync(permission);
@@ -33,7 +35,12 @@ namespace Porcupine.Application.Services
 
         public async Task<BaseResponseDto> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            var permission = await _permissionRepository.GetFirstAsync(x => x.Id == id);
+            var permission = await _permissionRepository.GetFirstAsync(x => x.Id == id, includes: x => x.Groups);
+
+            if (permission.Groups != null)
+            {
+                throw new InvalidOperationException("Cannot delete the child (permission) while linked to a parent (group).");
+            }
 
             return new BaseResponseDto
             {
