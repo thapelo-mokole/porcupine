@@ -1,10 +1,15 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Porcupine.Application.Contracts.Common;
 using Porcupine.Application.Contracts.Models.Groups;
 using Porcupine.Application.Contracts.Models.Groups.Dtos;
 
 using Porcupine.Core.Entities;
+using Porcupine.EntityFrameworkCore.EntityFrameworkCore;
+using Porcupine.EntityFrameworkCore.Repositories.GroupPermissions;
 using Porcupine.EntityFrameworkCore.Repositories.Groups;
+using Porcupine.EntityFrameworkCore.Repositories.Permissions;
 
 namespace Porcupine.Application.Services
 {
@@ -12,24 +17,52 @@ namespace Porcupine.Application.Services
     {
         private readonly IMapper _mapper;
         private readonly IGroupRepository _groupRepository;
+        private readonly IGroupPermissionRepository _groupPermissionRepository;
+        private readonly DatabaseContext _context;
 
         public GroupAppService(IMapper mapper,
-            IGroupRepository groupRepository)
+            IGroupRepository groupRepository,
+            DatabaseContext context,
+            IGroupPermissionRepository groupPermissionRepository
+            )
         {
             _mapper = mapper;
             _groupRepository = groupRepository;
+            _groupPermissionRepository = groupPermissionRepository;
+            _context = context;
         }
 
         public async Task<CreateUpdateGroupResponseDto> CreateAsync(CreateUpdateGroupDto createGroupDto)
         {
-            var group = _mapper.Map<Group>(createGroupDto);
+            var results = new CreateUpdateGroupResponseDto();
 
-            var result = await _groupRepository.AddAsync(group);
-
-            return new CreateUpdateGroupResponseDto
+            try
             {
-                Id = result.Id
-            };
+                Group group = new()
+                {
+                    ShortDescription = createGroupDto.ShortDescription,
+                    LongDescription = createGroupDto.LongDescription
+                };
+
+                var result = await _groupRepository.AddAsync(group);
+
+                List<GroupPermission> groupPermissions = createGroupDto.Permissions.Select(group => new GroupPermission
+                {
+                    PermissionId = new Guid(group),
+                    GroupId = result.Id
+                }).ToList();
+
+                await _groupPermissionRepository.AddRangeAsync(groupPermissions);
+
+                results.Id = result.Id;
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception or log it
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+
+            return results;
         }
 
         public async Task<BaseResponseDto> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
@@ -44,7 +77,7 @@ namespace Porcupine.Application.Services
 
         public async Task<IEnumerable<GroupResponseDto>> GetAllListAsync(CancellationToken cancellationToken = default)
         {
-            var groups = await _groupRepository.GetAllAsync();
+            var groups = await _groupRepository.GetAllAsync(includes: x => x.Permissions);
             return _mapper.Map<IEnumerable<GroupResponseDto>>(groups);
         }
 
@@ -60,14 +93,38 @@ namespace Porcupine.Application.Services
 
         public async Task<CreateUpdateGroupResponseDto> UpdateAsync(Guid id, CreateUpdateGroupDto createUpdateGroupDto, CancellationToken cancellationToken = default)
         {
-            var group = await _groupRepository.GetFirstAsync(x => x.Id == id);
+            var results = new CreateUpdateGroupResponseDto();
 
-            _mapper.Map(createUpdateGroupDto, group);
-
-            return new CreateUpdateGroupResponseDto
+            try
             {
-                Id = (await _groupRepository.UpdateAsync(group)).Id
-            };
+                var group = await _groupRepository.GetFirstAsync(x => x.Id == id);
+                group.ShortDescription = createUpdateGroupDto.ShortDescription;
+                group.LongDescription = createUpdateGroupDto.LongDescription;
+
+                var result = await _groupRepository.UpdateAsync(group);
+
+                // Remove existing mappings
+                var currentLinks = await _groupPermissionRepository.GetByGroupAsync(id);
+                await _groupPermissionRepository.DeleteRangeAsync(currentLinks);
+
+                // Add new mappings
+                List<GroupPermission> groupPermissions = createUpdateGroupDto.Permissions.Select(group => new GroupPermission
+                {
+                    PermissionId = new Guid(group),
+                    GroupId = result.Id
+                }).ToList();
+
+                await _groupPermissionRepository.AddRangeAsync(groupPermissions);
+
+                results.Id = result.Id;
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception or log it
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+
+            return results;
         }
     }
 }

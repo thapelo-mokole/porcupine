@@ -19,7 +19,7 @@ namespace Porcupine.EntityFrameworkCore.EntityFrameworkCore
                     {
                         var seedData = new List<User>
                         {
-                            new  User { UserName = "admin", Email = "admin@admin.com", EmailConfirmed = true }
+                            new  User { UserName = "admin", Email = "admin@admin.com", Name = "Thapelo", Surname= "Mokole", EmailConfirmed = true }
                         };
 
                         await context.Users.AddRangeAsync(seedData);

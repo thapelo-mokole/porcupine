@@ -11,6 +11,8 @@ namespace Porcupine.Core.Entities
     {
         public virtual string? ShortDescription { get; set; }
         public virtual string? LongDescription { get; set; }
+        public ICollection<Permission> Permissions { get; } = new List<Permission>();
+        public ICollection<User> Users { get; } = new List<User>();
 
         public string CreatedBy { get; set; }
 

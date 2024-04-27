@@ -44,6 +44,19 @@ namespace Porcupine.EntityFrameworkCore.Repositories.Base
             return await DbSet.ToListAsync();
         }
 
+        public async Task<List<TEntity>> GetAllAsync(params Expression<Func<TEntity, object>>[] includes)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            // Apply includes
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.ToListAsync();
+        }
+
         public async Task<TEntity> GetFirstAsync(Expression<Func<TEntity, bool>> predicate)
         {
             var entity = await DbSet.Where(predicate).FirstOrDefaultAsync();

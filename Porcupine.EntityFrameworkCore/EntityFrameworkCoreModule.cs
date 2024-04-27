@@ -4,8 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Porcupine.Core.Shared;
 using Porcupine.EntityFrameworkCore.EntityFrameworkCore;
+using Porcupine.EntityFrameworkCore.Repositories.GroupPermissions;
 using Porcupine.EntityFrameworkCore.Repositories.Groups;
 using Porcupine.EntityFrameworkCore.Repositories.Permissions;
+using Porcupine.EntityFrameworkCore.Repositories.UserGroups;
 using Porcupine.EntityFrameworkCore.Repositories.Users;
 
 namespace Porcupine.EntityFrameworkCore
@@ -26,6 +28,8 @@ namespace Porcupine.EntityFrameworkCore
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IGroupRepository, GroupRepository>();
             services.AddScoped<IPermissionRepository, PermissionRepository>();
+            services.AddScoped<IGroupPermissionRepository, GroupPermissionRepository>();
+            services.AddScoped<IUserGroupRepository, UserGroupRepository>();
         }
 
         private static void AddDatabase(this IServiceCollection services, IConfiguration configuration)

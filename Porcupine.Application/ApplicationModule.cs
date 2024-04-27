@@ -5,6 +5,7 @@ using Porcupine.Application.Common;
 using Porcupine.Application.Contracts.Models.Groups;
 using Porcupine.Application.Contracts.Models.Permissions;
 using Porcupine.Application.Contracts.Models.Users;
+using Porcupine.Application.Contracts.Models.Utils;
 using Porcupine.Application.Services;
 using Porcupine.Core.Shared.Utils.Implementation;
 using Porcupine.Core.Shared.Utils.Interface;
@@ -30,6 +31,7 @@ namespace Porcupine.Application
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IPermissionAppService, PermissionAppService>();
             services.AddScoped<IGroupAppService, GroupAppService>();
+            services.AddScoped<ILookupAppService, LookupAppService>();
             services.AddScoped<IUtilityService, UtilityService>();
         }
 

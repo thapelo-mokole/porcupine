@@ -20,6 +20,8 @@ namespace Porcupine.Core.Entities
 
         public override string ToString() => UserName ?? string.Empty;
 
+        public ICollection<Group> Groups { get; } = new List<Group>();
+
         public string? CreatedBy { get; set; }
 
         public DateTime CreatedOn { get; set; }
