@@ -45,7 +45,7 @@ namespace Porcupine.EntityFrameworkCore.Repositories.Base
             return await DbSet.ToListAsync();
         }
 
-        public async Task<List<TEntity>> GetAllAsync(params Expression<Func<TEntity, object>>[] includes)
+        public async Task<List<TEntity>> GetAllWithDetailsAsync(params Expression<Func<TEntity, object>>[] includes)
         {
             IQueryable<TEntity> query = DbSet;
 

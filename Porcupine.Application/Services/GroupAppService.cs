@@ -84,7 +84,7 @@ namespace Porcupine.Application.Services
 
         public async Task<IEnumerable<GroupResponseDto>> GetAllListAsync(CancellationToken cancellationToken = default)
         {
-            var groups = await _groupRepository.GetAllAsync(includes: x => x.Permissions);
+            var groups = await _groupRepository.GetAllWithDetailsAsync(x => x.Permissions, x => x.Users);
             return _mapper.Map<IEnumerable<GroupResponseDto>>(groups);
         }
 

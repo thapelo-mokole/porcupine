@@ -85,7 +85,7 @@ namespace Porcupine.Application.Services
 
         public async Task<IEnumerable<UserResponseDto>> GetAllListAsync(CancellationToken cancellationToken = default)
         {
-            var users = await _userRepository.GetAllAsync(includes: x => x.Groups);
+            var users = await _userRepository.GetAllWithDetailsAsync(includes: x => x.Groups);
             return _mapper.Map<IEnumerable<UserResponseDto>>(users);
         }
 
