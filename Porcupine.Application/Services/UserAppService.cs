@@ -19,16 +19,12 @@ namespace Porcupine.Application.Services
         private readonly IUserRepository _userRepository;
         private readonly IUserGroupRepository _userGroupRepository;
 
-        private readonly DatabaseContext _context;
-
         public UserAppService(
             IMapper mapper,
-            DatabaseContext context,
             IUserRepository userRepository,
             IUserGroupRepository userGroupRepository)
         {
             _mapper = mapper;
-            _context = context;
             _userRepository = userRepository;
             _userGroupRepository = userGroupRepository;
         }

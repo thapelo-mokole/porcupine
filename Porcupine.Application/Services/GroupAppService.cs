@@ -18,18 +18,15 @@ namespace Porcupine.Application.Services
         private readonly IMapper _mapper;
         private readonly IGroupRepository _groupRepository;
         private readonly IGroupPermissionRepository _groupPermissionRepository;
-        private readonly DatabaseContext _context;
 
         public GroupAppService(IMapper mapper,
             IGroupRepository groupRepository,
-            DatabaseContext context,
             IGroupPermissionRepository groupPermissionRepository
             )
         {
             _mapper = mapper;
             _groupRepository = groupRepository;
             _groupPermissionRepository = groupPermissionRepository;
-            _context = context;
         }
 
         public async Task<CreateUpdateGroupResponseDto> CreateAsync(CreateUpdateGroupDto createGroupDto)
