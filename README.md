@@ -18,6 +18,8 @@ Below i list a some of the technologies that i used, i tried not to add uncessar
 
 *Migrations will be applied automatically when the application gets ran for the first time*. 
 
+The default connection server is set to **Server=(LocalDb)\\MSSQLLocalDB**
+
 **However**, If you want to add new migrations to be applied to over the database, you can run the command below in the root folder.
 
 ```c#
